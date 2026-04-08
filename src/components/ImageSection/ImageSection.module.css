@@ -45,7 +45,6 @@
   gap: var(--sp-sm);
 }
 
-/* floating badge */
 .badge {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 0.62rem; font-weight: 600;
@@ -123,48 +122,20 @@
   .dots { display: none; }
 }
 
-/* Mobile Responsive - max-width: 768px */
 @media (max-width: 768px) {
-  .section {
-    border-radius: var(--r-lg);
-    min-height: 200px;
-  }
-  .mo {
-    font-size: clamp(1.6rem, 8vw, 2.2rem);
-  }
-  .content {
-    padding: var(--sp-md);
-    gap: 8px;
-  }
-  .year {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-  }
-  .badge {
-    font-size: 0.58rem;
-    padding: 3px 10px;
-  }
-  .line {
-    width: 36px;
-  }
-  /* Hide decorative elements on small screens */
+  .section { border-radius: var(--r-lg); min-height: 200px; }
+  .mo { font-size: clamp(1.6rem, 8vw, 2.2rem); }
+  .content { padding: var(--sp-md); gap: 8px; }
+  .year { font-size: 0.7rem; letter-spacing: 0.2em; }
+  .badge { font-size: 0.58rem; padding: 3px 10px; }
+  .line { width: 36px; }
   .quote { display: none; }
   .dots { display: none; }
 }
 
-/* Smaller mobile screens - max-width: 480px */
 @media (max-width: 480px) {
-  .section {
-    border-radius: var(--r-md);
-  }
-  .mo {
-    font-size: clamp(1.4rem, 7vw, 1.8rem);
-  }
-  .content {
-    padding: var(--sp-sm) var(--sp-md);
-  }
-  .badge {
-    font-size: 0.55rem;
-    padding: 3px 8px;
-  }
+  .section { border-radius: var(--r-md); }
+  .mo { font-size: clamp(1.4rem, 7vw, 1.8rem); }
+  .content { padding: var(--sp-sm) var(--sp-md); }
+  .badge { font-size: 0.55rem; padding: 3px 8px; }
 }

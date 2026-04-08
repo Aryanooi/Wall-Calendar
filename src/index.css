@@ -66,7 +66,17 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body, #root { height: 100%; overflow: hidden; }
+html, body, #root { height: 100%; }
+
+/* Mobile scrolling fix */
+@media (max-width: 768px) {
+  html, body, #root {
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
 
 body {
   font-family: var(--font-sans);

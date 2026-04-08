@@ -1,5 +1,5 @@
 .root {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: var(--clr-bg);
@@ -7,7 +7,6 @@
   transition: background 0.5s var(--ease);
 }
 
-/* theme toggle — glass pill */
 .themeBtn {
   position: fixed;
   top: var(--sp-lg);
@@ -36,7 +35,6 @@
 }
 .themeBtn:active { transform: rotate(20deg) scale(0.95); }
 
-/* layout */
 .layout {
   flex: 1;
   display: grid;
@@ -64,7 +62,6 @@
   overflow: hidden;
 }
 
-/* glass card */
 .card {
   background: var(--clr-surface);
   backdrop-filter: blur(24px) saturate(1.3);
@@ -93,7 +90,6 @@
   overflow: hidden;
 }
 
-/* footer */
 .footer {
   text-align: center;
   padding: 6px var(--sp-xl);
@@ -114,49 +110,52 @@
   .imgSide { max-height: 280px; }
 }
 
-/* Mobile Responsive - max-width: 768px */
 @media (max-width: 768px) {
-  .root { overflow: auto; }
+  .root {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
   .layout {
     grid-template-columns: 1fr;
     padding: var(--sp-md);
     gap: var(--sp-md);
-    overflow-y: auto;
     min-height: auto;
+    overflow: visible;
   }
-  /* Hero section - reduced to 40-50% viewport height */
   .imgSide {
     max-height: 45vh;
     min-height: 200px;
     border-radius: var(--r-lg);
+    overflow: visible;
   }
   .rightSide {
     gap: var(--sp-md);
+    min-height: auto;
   }
-  /* Cards - consistent spacing */
   .card {
     border-radius: var(--r-lg);
+    min-height: auto;
   }
-  /* Calendar card - give more space */
   .calCard {
     max-height: none;
     flex: 0 0 auto;
   }
-  /* Notes card - ensure proper separation */
   .notesCard {
-    margin-top: var(--sp-sm);
+    margin-top: var(--sp-md);
+    margin-bottom: var(--sp-md);
     min-height: 200px;
   }
-  /* Theme button - adjust position */
   .themeBtn {
     top: var(--sp-md);
     right: var(--sp-md);
     width: 40px;
     height: 40px;
   }
-  /* Footer - adjust padding */
   .footer {
     padding: var(--sp-sm) var(--sp-md);
+    margin-top: auto;
   }
 }
 
