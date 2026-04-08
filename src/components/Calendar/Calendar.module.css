@@ -232,3 +232,102 @@
   transform: rotateY(90deg);
   box-shadow: 10px 0 30px rgba(0, 0, 0, 0.15);
 }
+
+/* Mobile Responsive - max-width: 768px */
+@media (max-width: 768px) {
+  .hdr {
+    padding: var(--sp-sm) var(--sp-md);
+  }
+  .moName {
+    font-size: 1.1rem;
+  }
+  .yrLabel {
+    font-size: 0.65rem;
+  }
+  .nav {
+    width: 36px;
+    height: 36px;
+  }
+  /* Day of week labels - smaller on mobile */
+  .dowRow {
+    padding: var(--sp-xs) var(--sp-xs) 2px;
+  }
+  .dow {
+    font-size: 0.55rem;
+    padding: 4px 0;
+  }
+  /* Calendar grid - increased cell size for touch */
+  .flipper {
+    gap: 4px;
+    padding: 4px var(--sp-xs) var(--sp-sm);
+  }
+  .cell {
+    height: 42px;
+    min-width: 36px;
+    border-radius: var(--r-md);
+  }
+  .num {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  /* Selection indicators - larger touch targets */
+  .start .num, .end .num {
+    width: 32px;
+    height: 32px;
+  }
+  .dot {
+    width: 4px;
+    height: 4px;
+    bottom: 4px;
+  }
+  /* Range bar - better spacing */
+  .bar {
+    padding: 8px var(--sp-md);
+    gap: var(--sp-xs);
+  }
+  .chip {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+  .chip span {
+    font-size: 0.55rem;
+  }
+  .clearBtn {
+    width: 26px;
+    height: 26px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Smaller mobile screens - max-width: 480px */
+@media (max-width: 480px) {
+  .hdr {
+    padding: 10px 12px;
+  }
+  .moName {
+    font-size: 1rem;
+  }
+  .nav {
+    width: 32px;
+    height: 32px;
+  }
+  .dow {
+    font-size: 0.5rem;
+  }
+  .cell {
+    height: 40px;
+    min-width: 32px;
+  }
+  .num {
+    font-size: 0.8rem;
+  }
+  .start .num, .end .num {
+    width: 28px;
+    height: 28px;
+  }
+  /* Ensure grid fits screen */
+  .flipper {
+    gap: 3px;
+    padding: 3px 8px 10px;
+  }
+}

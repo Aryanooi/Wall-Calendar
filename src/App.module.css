@@ -114,9 +114,66 @@
   .imgSide { max-height: 280px; }
 }
 
-@media (max-width: 640px) {
-  .layout { padding: var(--sp-sm); gap: var(--sp-sm); }
-  .imgSide { max-height: 200px; }
-  .themeBtn { top: var(--sp-md); right: var(--sp-md); width: 36px; height: 36px; }
-  .card { border-radius: var(--r-lg); }
+/* Mobile Responsive - max-width: 768px */
+@media (max-width: 768px) {
+  .root { overflow: auto; }
+  .layout {
+    grid-template-columns: 1fr;
+    padding: var(--sp-md);
+    gap: var(--sp-md);
+    overflow-y: auto;
+    min-height: auto;
+  }
+  /* Hero section - reduced to 40-50% viewport height */
+  .imgSide {
+    max-height: 45vh;
+    min-height: 200px;
+    border-radius: var(--r-lg);
+  }
+  .rightSide {
+    gap: var(--sp-md);
+  }
+  /* Cards - consistent spacing */
+  .card {
+    border-radius: var(--r-lg);
+  }
+  /* Calendar card - give more space */
+  .calCard {
+    max-height: none;
+    flex: 0 0 auto;
+  }
+  /* Notes card - ensure proper separation */
+  .notesCard {
+    margin-top: var(--sp-sm);
+    min-height: 200px;
+  }
+  /* Theme button - adjust position */
+  .themeBtn {
+    top: var(--sp-md);
+    right: var(--sp-md);
+    width: 40px;
+    height: 40px;
+  }
+  /* Footer - adjust padding */
+  .footer {
+    padding: var(--sp-sm) var(--sp-md);
+  }
+}
+
+/* Smaller mobile screens - max-width: 480px */
+@media (max-width: 480px) {
+  .layout {
+    padding: 12px;
+    gap: 12px;
+  }
+  .imgSide {
+    max-height: 35vh;
+    min-height: 160px;
+  }
+  .card {
+    border-radius: var(--r-md);
+  }
+  .notesCard {
+    margin-top: var(--sp-md);
+  }
 }
