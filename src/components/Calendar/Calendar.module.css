@@ -1,0 +1,234 @@
+.wrap { display: flex; flex-direction: column; }
+
+.hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-sm) var(--sp-lg);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.title { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+
+.moName {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--clr-text);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.yrLabel {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  letter-spacing: 0.14em;
+}
+
+.nav {
+  width: 32px; height: 32px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface-2);
+  backdrop-filter: blur(8px);
+  color: var(--clr-text-dim);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s var(--ease);
+}
+.nav:hover {
+  background: var(--clr-accent-dim);
+  border-color: rgba(232,168,56,0.3);
+  color: var(--clr-accent);
+  transform: scale(1.12);
+  box-shadow: var(--shadow-glow);
+}
+.nav:active { transform: scale(0.92); }
+
+.dowRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: var(--sp-sm) var(--sp-sm) 2px;
+}
+.dow {
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  padding: 2px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  padding: 2px var(--sp-sm) var(--sp-sm);
+  animation: gridIn 0.35s var(--ease) both;
+}
+@keyframes gridIn {
+  from { opacity: 0; transform: translateY(6px) scale(0.99); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cell {
+  position: relative;
+  height: 36px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  transition: background 0.15s var(--ease), transform 0.2s var(--ease-spring), box-shadow 0.15s;
+}
+.cell:hover:not(.other):not(.start):not(.end) {
+  background: var(--clr-accent-glow);
+  transform: scale(1.1);
+  z-index: 2;
+  box-shadow: 0 0 0 1px var(--clr-border-hover);
+}
+.cell:active:not(.other) { transform: scale(0.92) !important; }
+.cell:focus-visible { outline: 2px solid var(--clr-accent); outline-offset: 2px; }
+
+.num {
+  position: relative; z-index: 2;
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--clr-text);
+  line-height: 1;
+  pointer-events: none;
+  transition: color 0.15s, transform 0.2s var(--ease-spring);
+}
+
+.other { pointer-events: none; opacity: 0.3; }
+.other .num { color: var(--clr-text-muted); }
+
+.today {
+  background: var(--clr-today-bg);
+  box-shadow: inset 0 0 0 1.5px var(--clr-today-ring);
+}
+.today .num { font-weight: 700; color: var(--clr-accent-light); }
+
+.wknd .num { color: var(--clr-weekend); }
+
+.fill {
+  position: absolute;
+  top: 15%; bottom: 15%;
+  left: 0; right: 0;
+  background: linear-gradient(90deg, var(--clr-range-fill), rgba(207,107,142,0.10));
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.fillL { border-radius: var(--r-sm) 0 0 var(--r-sm); left: 8%; }
+.fillR { border-radius: 0 var(--r-sm) var(--r-sm) 0; right: 8%; }
+.fillL.fillR { display: none; }
+
+.mid .num { color: var(--clr-accent-light); font-weight: 600; }
+.mid { background: var(--clr-accent-glow); }
+
+.start .num, .end .num {
+  z-index: 3;
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
+}
+.start .num {
+  background: linear-gradient(135deg, #e8a838, #d49a30);
+  color: var(--clr-text-on-accent);
+  box-shadow: 0 2px 12px rgba(232,168,56,0.45), 0 0 0 3px rgba(232,168,56,0.12);
+}
+.end .num {
+  background: linear-gradient(135deg, #cf6b8e, #b85a7e);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(207,107,142,0.45), 0 0 0 3px rgba(207,107,142,0.12);
+}
+.start:hover .num, .end:hover .num {
+  transform: scale(1.15);
+  box-shadow: 0 4px 20px rgba(232,168,56,0.5), 0 0 0 4px rgba(232,168,56,0.15);
+}
+
+.dot {
+  position: absolute; bottom: 3px; left: 50%;
+  transform: translateX(-50%);
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--clr-accent);
+  box-shadow: 0 0 6px rgba(232,168,56,0.4);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.bar {
+  display: flex; align-items: center; gap: var(--sp-sm);
+  padding: 6px var(--sp-lg);
+  border-top: 1px solid var(--clr-border);
+  background: var(--clr-surface-2);
+  backdrop-filter: blur(8px);
+  flex-wrap: wrap;
+  animation: barIn 0.25s var(--ease) both;
+}
+@keyframes barIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.chip {
+  display: flex; align-items: center; gap: 5px;
+  padding: 3px 10px;
+  background: var(--clr-accent-dim);
+  border: 1px solid rgba(232,168,56,0.15);
+  border-radius: var(--r-full);
+  font-size: 0.74rem;
+  color: var(--clr-text);
+  backdrop-filter: blur(4px);
+}
+.chip span {
+  font-size: 0.58rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--clr-text-dim); font-weight: 600;
+}
+.chipEnd {
+  background: rgba(207,107,142,0.10);
+  border-color: rgba(207,107,142,0.18);
+}
+.arrow { color: var(--clr-text-muted); font-size: 0.85rem; }
+
+.clearBtn {
+  margin-left: auto;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  font-size: 0.6rem;
+  color: var(--clr-text-muted);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.clearBtn:hover { background: rgba(255,80,80,0.12); color: #ff6060; transform: scale(1.1); }
+
+.flipContainer {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.flipper {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  padding: 2px var(--sp-sm) var(--sp-sm);
+  transform-style: preserve-3d;
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 400ms ease;
+  backface-visibility: hidden;
+}
+
+.flipOutLeft {
+  transform: rotateY(-90deg);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+}
+
+.flipOutRight {
+  transform: rotateY(90deg);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.15);
+}

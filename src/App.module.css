@@ -1,0 +1,122 @@
+.root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--clr-bg);
+  overflow: hidden;
+  transition: background 0.5s var(--ease);
+}
+
+/* theme toggle — glass pill */
+.themeBtn {
+  position: fixed;
+  top: var(--sp-lg);
+  right: var(--sp-lg);
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-full);
+  background: var(--clr-surface);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid var(--clr-border);
+  color: var(--clr-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm), var(--shadow-glass);
+  transition: all 0.25s var(--ease);
+}
+.themeBtn:hover {
+  background: var(--clr-accent-dim);
+  border-color: rgba(232,168,56,0.3);
+  color: var(--clr-accent);
+  transform: rotate(20deg) scale(1.1);
+  box-shadow: var(--shadow-glow), var(--shadow-glass);
+}
+.themeBtn:active { transform: rotate(20deg) scale(0.95); }
+
+/* layout */
+.layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-md);
+  padding: var(--sp-md) var(--sp-lg);
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.imgSide {
+  min-height: 0;
+  overflow: hidden;
+  border-radius: var(--r-xl);
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* glass card */
+.card {
+  background: var(--clr-surface);
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow), var(--shadow-glass);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.card:hover {
+  border-color: var(--clr-border-hover);
+  box-shadow: var(--shadow-lg), var(--shadow-glass);
+}
+
+.calCard {
+  flex: 0 0 auto;
+  max-height: 62%;
+}
+
+.notesCard {
+  flex: 1;
+  min-height: 160px;
+  overflow: hidden;
+}
+
+/* footer */
+.footer {
+  text-align: center;
+  padding: 6px var(--sp-xl);
+  font-size: 0.62rem;
+  color: var(--clr-text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-sm);
+  flex-shrink: 0;
+}
+.footerDot { color: var(--clr-accent); font-size: 0.8em; }
+
+@media (max-width: 1100px) {
+  .layout { grid-template-columns: 1fr; overflow-y: auto; }
+  .imgSide { max-height: 280px; }
+}
+
+@media (max-width: 640px) {
+  .layout { padding: var(--sp-sm); gap: var(--sp-sm); }
+  .imgSide { max-height: 200px; }
+  .themeBtn { top: var(--sp-md); right: var(--sp-md); width: 36px; height: 36px; }
+  .card { border-radius: var(--r-lg); }
+}
